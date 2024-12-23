@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.css": "/firstsipmatcha/static/css/main.15b5a042.css",
-    "main.js": "/firstsipmatcha/static/js/main.8db2ea4b.js",
+    "main.css": "/firstsipmatcha/static/css/main.9688fc0b.css",
+    "main.js": "/firstsipmatcha/static/js/main.e00ee0db.js",
     "static/media/matcha-latte-transparent.png": "/firstsipmatcha/static/media/matcha-latte-transparent.bb9c128e6634bad61d36.png",
     "index.html": "/firstsipmatcha/index.html"
   },
   "entrypoints": [
-    "static/css/main.15b5a042.css",
-    "static/js/main.8db2ea4b.js"
+    "static/css/main.9688fc0b.css",
+    "static/js/main.e00ee0db.js"
   ]
 }
