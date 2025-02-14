@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/firstsipmatcha/static/css/main.d9a546a8.css",
-    "main.js": "/firstsipmatcha/static/js/main.5f80b18d.js",
+    "main.css": "/firstsipmatcha/static/css/main.28580760.css",
+    "main.js": "/firstsipmatcha/static/js/main.dd7aa922.js",
     "static/media/matcha-latte-transparent.png": "/firstsipmatcha/static/media/matcha-latte-transparent.bb9c128e6634bad61d36.png",
     "static/media/02-08-25.jpg": "/firstsipmatcha/static/media/02-08-25.1bd23d4a014d6e1901f2.jpg",
     "static/media/example.jpg": "/firstsipmatcha/static/media/example.63fb737f7f7e21602b5c.jpg",
@@ -9,7 +9,7 @@
     "index.html": "/firstsipmatcha/index.html"
   },
   "entrypoints": [
-    "static/css/main.d9a546a8.css",
-    "static/js/main.5f80b18d.js"
+    "static/css/main.28580760.css",
+    "static/js/main.dd7aa922.js"
   ]
 }
