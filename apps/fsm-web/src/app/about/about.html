@@ -1,0 +1,57 @@
+<div id="about" class="page">
+    <div class="page-item-container title" titleText="About Us"></div>
+
+    <div class="page-item-container body">
+        <section id="section-1" class="section">
+            <div class="section-heading"><h2>First Sip Matcha Bar</h2></div>
+            <div class="section-body">
+                <p>Our ceremonial matcha is sourced from <i>Uji, Japan</i>—famous for its ideal climate and growing conditions. Guarantee authentic, top-quality green tea with every sip!</p>
+
+                <figure class="graphic" [figcaption]="'📅 Feb. 8, 2025 - Valentine\'s Market'">
+                    <img
+                        ngSrc="/images/about/02-08-25.jpg"
+                        alt="An image of our lovely founder working at one of our pop-up shops!"
+                        fill
+                    />
+                </figure>
+                
+                <p>Just a bored 23 year old living at home and drinks matcha everyday so she decided to make a business out of it to escape working in academics and become filthy rich.</p>
+            </div>
+        </section>
+
+        <section id="section-2" class="section">
+            <div class="section-heading"><h2>All about matcha</h2></div>
+            <div class="section-body">
+                <p>Matcha is a powdered form of Japanese green tea produced from specially grown and processed Camellia sinensis leaves.</p>
+                <p>It is made through 3 separate stages:</p>
+                <ol class="stages-container restrict">
+                    @for(stage of about_info.stages; track stage.num){
+                        <li class="stage">
+                            <h3 class="label">{{stage.label}}</h3>
+                            <div class="description">{{stage.description}}</div>
+                        </li>
+                    }
+                </ol>
+
+                <p>Here are some of the benefits of matcha:</p>
+                <ul class="benefits-container">
+                    @for(benefit of about_info.benefits; track benefit.num){
+                        <li class="benefit" [ngClass]="{'open': toggleList[benefit.num-1]}" [id]="benefit.id">
+                            <h3>
+                                <button
+                                    class="btn-secondary"
+                                    [id]=`${benefit.id}-toggle`
+                                    [itemIconClassName]="benefit.icon_className"
+                                    [itemLabel]="benefit.label"
+                                    [ariaExpanded]="toggleList[benefit.num-1]"
+                                    (click)="toggleBenefit(benefit.num-1)"
+                                ></button>
+                            </h3>
+                            <div class="description" [id]=`${benefit.id}-description` [attr.aria-labelledby]=`${benefit.id}-toggle`>{{benefit.description}}</div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </section>
+    </div>
+</div>

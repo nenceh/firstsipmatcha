@@ -1,0 +1,67 @@
+<div class="carousel-container" aria-roledescription='carousel'>
+    <section
+        class="carousel landing"
+        [ngStyle]="{'height': list.length > 1 && slideHeight()}"
+        aria-atomic="false"
+    >
+        @for(slide of list(); track $index){
+            <div #slideRef
+                id="slide-{{$index}}"
+                class="slide"
+                [ngClass]="{
+                    'single': list().length == 1,
+                    'current': list().length == 1 || (curIdx() == $index && list().length > 1),
+                    'next': fwdIdx() == $index && list().length > 1,
+                    'prev': bwdIdx() == $index && list().length > 1,
+                    'animate': list().length > 1 && canAnimate() && ((direction() == 1 && (bwdIdx() == $index || curIdx() == $index)) || direction() == -1 && (fwdIdx() == $index || curIdx() == $index)),
+                }"
+
+                attr.aria-label="{{$index+1}} of {{list().length}}"
+                [ariaLive]="{'off' : curIdx() == $index && list().length > 1}"
+                [ariaHidden]="{'true' : curIdx() != $index && list().length > 1}"
+                
+                aria-roledescription='slide'
+
+                [targetDate]="slide.targetDate"
+                [endDate]="slide.endDate"
+                [title1]="slide.title1"
+                [title2]="slide.title2"
+                [locationAddress]="slide.locationAddress"
+                [locationTag]="slide.locationTag"
+                [displayTimer]="slide.displayTimer"
+            ></div>
+        }
+    </section>
+
+        @if(list.length > 1){
+            <button
+                class="btn-icon prev"
+                (click)="slideConfig(-1)"
+                aria-label='Go to next slide'
+                [disabled]="disable()"
+            >
+                <i class="fa fa-solid fa-arrow-left"></i>
+                <span class='sr-only'>Go to next slide</span>
+            </button>
+            <button
+                class="btn-icon next"
+                (click)="slideConfig(1)"
+                aria-label='Go to previous slide'
+                [disabled]="disable()"
+            >
+                <i class="fa fa-solid fa-arrow-right"></i>
+                <span class='sr-only'>Go to previous slide</span>
+            </button>
+            
+            <div
+                class="pagination"
+                [ngStyle]="{'left': list.length > 1 && `calc(50% - ${(list.length + 1) * 8 / 2}px`}"
+            >
+                <div
+                    class="dot"
+                    *ngFor="let index of [].constructor(list.length)"
+                    [ngClass]="{'cur': list.length > 1 && curIdx() == index}"
+                ></div>
+            </div>
+        }
+</div>

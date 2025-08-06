@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compileOnSave": false,
+  "files": [],
+  "references": [
+    {
+      "path": "./apps/fsm-be-e2e"
+    },
+    {
+      "path": "./apps/fsm-be"
+    },
+    {
+      "path": "./apps/fsm-web-e2e"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+<ul>
+    @if(modal()){
+        <li>
+            <a
+                [class]="classname()"
+                routerLink=""
+                ariaCurrentWhenActive="page"
+            >
+                Home
+            </a>
+        </li>
+    }
+    <li><a class={{classname()}} routerLink="/menu" ariaCurrentWhenActive="page">Our Menu</a></li>
+    <li><a [class]="classname()" routerLink="/about" ariaCurrentWhenActive="page">About Us</a></li>
+</ul>
+<ul class='social'>
+    <li>
+        <a aria-label="Instagram" class="btn-icon link" id="ig-link" href="https://www.instagram.com/firstsipmatcha/" rel='noopener noreferrer'>
+            <i aria-hidden="true" class="fa fa-brands fa-instagram"></i>
+        </a>
+    </li>
+    @if(tiktok()){
+        <li>
+            <a aria-label="TikTok" class="btn-icon link" id="tt-link" href="https://www.tiktok.com/@firstsipmatcha" rel='noopener noreferrer'>
+                <i aria-hidden="true" class="fa fa-brands fa-tiktok"></i>
+            </a>
+        </li>
+    }
+</ul>

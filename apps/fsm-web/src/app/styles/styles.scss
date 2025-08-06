@@ -1,0 +1,701 @@
+@import './variables';
+@import './header-nav';
+@import './home';
+@import './menu';
+@import './about';
+@import './skeleton';
+.header-container.loading{
+    background-color: get-color(main, primary-variant);
+    a.btn-menuitem{
+        transition: opacity 3s;
+        pointer-events: none;
+        &.loading{
+            opacity: 0;
+        }
+    }
+}
+
+body main, .footer-container{
+    transition: opacity 0.4s;
+    &.loading{opacity: 0;}
+}
+
+@media screen and (max-width: 479px){
+    #hero, #menu, #about {
+        padding-top: 56px;
+    }
+
+    .page{
+        &-title,&-body,&-item-container nav.breadcrumbs{
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+        &-body{
+            gap: 40px;
+        }
+
+        &-item-container{
+            &.title{
+                .page-title{
+                    figure{
+                        height: 200px;
+                    }
+                }
+            }
+        }
+    }
+
+    figure{
+        padding: 8px 0 24px;
+        &.graphic{
+            width: 100%;
+            height: 280px;
+        }
+        img{@include set-text(body, small);}
+        figcaption{
+            @include set-text(body, caption-small);
+            margin-top: 8px;
+        }
+    }
+
+    .footer{
+        gap: 40px;
+        padding: 40px 24px 24px;
+
+        &-logo{
+            margin: 8px 0 24px;;
+        }
+    }
+}
+
+@media screen and (min-width: 480px){
+    #hero, #menu, #about {
+        padding-top: 64px;
+    }
+
+    .page{
+        &-item-container{
+            &.title{
+                .page-title{
+                    figure{
+                        height: 200px;
+                    }
+                }
+            }
+        }
+        &-title,&-body,&-item-container nav.breadcrumbs{
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+        &-body{
+            gap: 80px;
+        }
+    }
+
+    figure{
+        padding: 16px 0 40px;
+        &.graphic{
+            width: 100%;
+            height: 340px;
+        }
+        img{@include set-text(body, small);}
+        figcaption{
+            @include set-text(body, caption-small);
+            margin-top: 8px;
+        }
+    }
+
+    .footer{
+        gap: 64px;
+        padding: 64px 40px 40px;
+
+        &-logo{
+            margin: 16px 0 40px;
+        }
+    }
+}
+
+@media screen and (max-width: 712px){
+    .page{
+        &-item-container{
+            &.title{
+                .page-title .info{
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 713px){
+    .page-title h1, .section-heading, .section-body p, .section-body .more-items-list, figcaption, .restrict, ul.benefits-container{max-width: 581px;}
+    .page{
+        &-item-container{
+            &.title{
+                .page-title{
+                    figure{
+                        height: 240px;
+                    }
+                }
+
+                &.menu-item .page-title{
+                    flex-direction: row;
+                    & >*{width: 50%;}
+                }
+            }
+        }
+        &-title,&-body,&-item-container nav.breadcrumbs{
+            padding-left: 80px;
+            padding-right: 80px;
+        }
+        &-title{gap: 24px;}
+    }
+    figure.graphic{
+        height: 400px;
+    }
+    .footer{padding: 64px 80px 40px;}
+}
+
+@media screen and (max-width: 943px){
+    svg{
+        width: 16px;
+        height: 16px;
+    }
+    i.fa{
+        font-size: 16px;
+        line-height: 16px;
+    }
+
+    %btn{ 
+        padding: 8px 16px;
+    }
+    .btn-icon{
+        padding: 12px;
+    }
+    
+    .icon-padding{
+        padding: 8px;
+    }
+
+    body{
+        &,p,button{@include set-text(body, small);}
+        h1{ @include set-text(heading, 1-small); }
+        h2{ @include set-text(heading, 2-small); }
+        h3{ @include set-text(heading, 3-small); }
+        h4 { @include set-text(heading, 4-small); }
+        h5 { @include set-text(heading, 5-small); }
+        h6 { @include set-text(heading, 6-small); }
+
+        a{@include set-text(body, small-semibold);}
+    }
+
+    .info{
+        .title{
+            gap: 4px;
+            &-1{
+                @include set-text(display, 2-small);
+            }
+            &-2{
+                @include set-text(display, 1-small);
+            }
+            .description{
+                @include set-text(body, small);
+            }
+        }
+    }
+
+    .page{
+        &-item-container{
+            &.title{
+                nav.breadcrumbs{
+                    padding-top: 8px;
+                    padding-bottom: 8px;
+                    ul{
+                        span{margin-left: 8px;}
+                    }
+                }
+                .page-title .info{
+                    gap: 4px;
+                    margin-top: 24px;
+                }
+            }
+        }
+        &-title{
+            padding-top: 64px;
+            padding-bottom: 40px;
+            width: 100%;
+
+            .description{@include set-text(body, small-semibold);}
+        }
+        &-body{
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+
+        .section{
+            gap: 24px;
+            &-heading{}
+            &-body{
+                gap: 20px;
+                ol,ul{
+                    gap: 24px;
+                }
+            }
+        }
+    }
+
+    .footer{
+        .main-nav, ul{
+            gap: 40px;
+            &.social{
+                gap: 8px;
+            }
+        }
+        &-logo svg{height: 80px;}
+    }
+}
+
+@media screen and (min-width: 944px){
+    html{scroll-padding-top: 96px;}
+    svg{
+        width: 24px;
+        height: 24px;
+    }
+    i.fa{
+        font-size: 24px;
+        line-height: 24px;
+    }
+
+    %btn{
+        padding: 12px 16px;
+    }
+    .btn-icon{
+        padding: 12px;
+    }
+    
+    .icon-padding{
+        padding: 12px;
+    }
+
+    figure{
+        padding: 24px 0 64px;
+        &.graphic{
+            width: 100%;
+            height: 540px;
+        }
+        img{@include set-text(body, large);}
+        figcaption{
+            @include set-text(body, caption);
+            margin-top: 16px;
+        }
+    }
+
+    body{
+        &,p,button{@include set-text(body, large);}
+        h1{ @include set-text(heading, 1); }
+        h2{ @include set-text(heading, 2); }
+        h3{ @include set-text(heading, 3); }
+        h4 { @include set-text(heading, 4); }
+        h5 { @include set-text(heading, 5); }
+        h6 { @include set-text(heading, 6); }
+
+        a{@include set-text(body, large-semibold);}
+    }
+
+    .page-title h1, .section-heading, .section-body p, .section-body .more-items-list, figcaption, .restrict, ul.benefits-container{
+        max-width: 769px;
+    }
+
+    #hero, #menu, #about {
+        padding-top: 100px;
+    }
+
+    .page{
+        &-item-container{
+            &.title{
+                nav.breadcrumbs{
+                    padding-top: 8px;
+                    padding-bottom: 8px;
+                    ul{
+                        span{margin-left: 12px;}
+                        li > *{
+                            @include set-text(body, caption-semibold);
+                        }
+                    }
+                }
+
+                .page-title{
+                    figure{
+                        height: 280px;
+                    }
+                    .info{
+                        gap: 8px;
+                    }
+                }
+            }
+        }
+        &-title,&-body,&-item-container nav.breadcrumbs{
+            padding-left: 120px;
+            padding-right: 120px;
+        }
+
+        &-title{
+            @include set-text(display, 1);
+            gap: 40px;
+            padding-top: 80px;
+            padding-bottom: 40px;
+
+            .description{@include set-text(body, large-semibold);}
+        }
+        &-body{
+            gap: 120px;
+            padding-top: 80px;
+            padding-bottom: 80px;
+        }
+
+        .section{
+            gap: 32px;
+            &-heading{}
+            &-body{
+                gap: 24px;
+                ol,ul{
+                    gap: 24px;
+                }
+            }
+        }
+    }
+
+    .info{
+        .title{
+            gap: 8px;
+        }
+        .title{
+            &-1{
+                @include set-text(display, 2);
+            }
+            &-2{
+                @include set-text(display, 1);
+            }
+            .description{
+                @include set-text(body, large);
+            }
+        }
+    }
+
+    .footer{
+        gap: 40px;
+        padding: 80px 120px 40px;
+        .main-nav, ul{
+            gap: 80px;
+            &.social{
+                gap: 20px;
+            }
+        }
+        &-logo{
+            margin: 24px 0 64px;
+            svg{height: 96px;}
+        }
+    }
+}
+
+@media screen and (max-width: 1279px){
+    .page-title h1, .section-heading, .section-body p, .section-body .more-items-list, figcaption, .restrict, ul.benefits-container{width: 100%;}
+}
+
+@media screen and (min-width: 1280px){
+    .page-title h1, .section-heading, .section-body p, .section-body .more-items-list, figcaption, .restrict, ul.benefits-container{
+        width: calc(8 * (100% + 40px) / 12 - 40px);
+        max-width: none;
+    }
+    .page{
+        &-title,&-body,&-item-container nav.breadcrumbs{
+            padding-left: 160px;
+            padding-right: 160px;
+        }
+    }
+    figure.graphic{
+        height: 580px;
+    }
+    .footer{
+        padding: 80px 160px 40px;
+    }
+}
+
+@media screen and (min-width: 1441px){
+    .page-title, .page-body, nav.breadcrumbs{
+        width: 1440px !important;
+        margin: 0 auto;
+    }
+}
+
+*, :after, :before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    overflow-x: hidden;
+    a{
+        color: get-color(main, secondary);
+        transition: color .2s ease;
+        text-underline-offset: 2px;
+    }
+    .icon-padding{height: fit-content;}
+
+    %btn, a{-webkit-tap-highlight-color: transparent;}
+}
+
+@media (hover: hover), (-ms-high-contrast:none) and (pointer: fine) {
+    body{
+        a:hover{color: get-color(main, secondary-hover);}
+    }
+
+    .btn-primary:hover{
+        background: get-color(main, secondary-hover);
+        color: get-color(main, on-secondary);
+    }
+
+    .btn-secondary:hover{
+        box-shadow: inset 0 0 0 1px get-color(main, primary-container-1);
+        background-color: get-color(neutral, 10);
+        color: get-color(main, secondary);
+    }
+
+    .btn-icon:hover{
+        background-color: get-color(main, secondary-container);
+        svg{fill: get-color(main, tertiary);}
+    }
+
+    .footer{
+        &-sitemap, ul{
+            a.btn-icon.link:hover{
+                background-color: transparent;
+                svg, i.fa{
+                    fill: get-color(main, secondary-hover);
+                    color: get-color(main, secondary-hover);
+                }
+            }
+
+            a.footer-link:hover{
+                color: get-color(main, secondary-hover);
+                text-decoration-color: get-color(main, secondary-hover);
+            }
+        }
+        
+        &-logo:hover svg path{
+            fill: get-color(main, secondary-hover);
+        }
+    }
+}
+
+figure{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    line-height: 0;
+    height: fit-content;
+    position: relative;
+
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        -webkit-touch-callout: none !important;
+        -webkit-user-select: none !important;
+        user-select: none;
+    }
+    &.graphic{
+        img{
+            background-color: get-color(main, secondary-container);
+            border-radius: 5px;
+        }
+    }
+}
+
+%btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    border: none;
+    border-radius: 4px;
+    cursor:pointer;
+    transition: background-color .2s ease, color .2s, box-shadow .2s;
+    height: fit-content;
+    width: fit-content;
+
+    i.fa{transition: color .2s;}
+}
+.btn-primary{
+    @extend %btn;
+    gap: 8px;
+    background: get-color(main, secondary);
+    color: get-color(main, on-secondary);
+    text-decoration: none;
+
+    svg{fill: get-color(main, on-secondary);}
+    &:active{
+        background: get-color(main, secondary-hover);
+        color: get-color(main, on-secondary);
+    }
+}
+.btn-secondary{
+    @extend %btn;
+    gap: 8px;
+    box-shadow: inset 0 0 0 1px get-color(main, primary-container-2);
+    background-color: get-color(neutral, 50);
+    color: get-color(main, on-secondary-container);
+    text-decoration: none;
+
+    svg{fill: get-color(main, secondary);}
+    &:active{
+        box-shadow: inset 0 0 0 1px get-color(main, primary-container-1);
+        background-color: get-color(neutral, 10);
+        color: get-color(main, secondary);
+    }
+}
+
+.btn-icon{
+    @extend %btn;
+    line-height: 0;
+    box-shadow: inset 0 0 0 2px get-color(main, primary-container-2);
+    line-height: 0;
+    height: fit-content;
+    border-radius: 100px;
+    background: none;
+    text-decoration: none;
+    svg{fill: get-color(main, on-primary);}
+
+    &:active{
+        background-color: get-color(main, secondary-container);
+        svg{fill: get-color(main, tertiary);}
+    }
+}
+
+.btn-menuitem{@extend %btn;}
+
+.landing, .slide, .page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .page{
+        &-title, &-body, &-body .section, &-body .section-body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        &-title{color: get-color(main, on-primary);}
+        &-body{color: get-color(main, primary);}
+        &-item-container{
+            width: 100%;
+            &.title{
+                background-color: get-color(main, primary-variant);
+                box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+
+                .breadcrumbs-container{
+                    box-shadow: inset 0 0 10px 0 rgba(0, 0, 0, 0.4);
+                    background-color: get-color(main, secondary-container);
+                }
+                nav.breadcrumbs{
+                    ul{
+                        list-style-type: none;
+                        flex-flow: row wrap;
+                        a{
+                            &, span{
+                                color: get-color(main, primary);
+                            }
+                        }
+
+                        li:last-child{font-weight: 600;}
+                    }
+                }
+
+                .page-title{
+                    .info{
+                        h1{width: unset;}
+                    }
+                }
+            }
+            &.body{background-color: get-color(neutral, 10);}
+        }
+    }
+
+    ol,ul{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .info{
+        &, .title{
+            display: flex;
+            flex-direction: column;
+        }
+        .title{
+            &-1, &-2, .description{width: 100%;}
+        }
+    }
+}
+
+.footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &-container{
+        background-color: get-color(main, primary-variant-container);
+    }
+
+    &-sitemap, .main-nav, ul{
+        display: flex;
+        list-style-type: none;
+        align-items: center;
+
+        .btn-icon.link{
+            box-shadow: unset;
+            padding: 9px;
+            width: 36px;
+
+            svg,i.fa{
+                color: get-color(main, secondary-container);
+                font-size: 18px;
+                line-height: 18px;
+            }
+
+            &:active {
+                background-color: transparent;
+                svg, i.fa{
+                    fill: get-color(main, secondary-hover);
+                    color: get-color(main, secondary-hover);
+                }
+            }
+        }
+        a.footer-link{
+            @include set-text(body, footer-semibold);
+            text-decoration: underline 1px solid transparent;
+            color: get-color(main, secondary-container);
+
+            &:active{
+                color: get-color(main, secondary-hover);
+                text-decoration-color: get-color(main, secondary-hover);
+            }
+        }
+    }
+
+    &-logo{
+        svg{
+            width: auto;
+            path{
+                transition: fill .3s ease;
+                fill: get-color(main, secondary-container);
+            }
+        }
+
+        &:active svg path{
+            fill: get-color(main, secondary-hover);
+        }
+    }
+}

@@ -1,0 +1,34 @@
+<div id="menu" class="page">
+    <div class="page-item-container title" [titleText]="'Our Menu'"></div>
+
+    <div class="page-item-container body">
+        <section class='menu-category'>
+            <ul *ngIf="!menuItems.loading" class="menu-category-list">
+                @for (item of menuItems.items; track item.itemId){
+                    <li class="list-item">
+                        <a
+                            [routerLink]="['/menu', item.itemId]"
+                            class="item-link"
+                        >
+                            <span class="sr-only">{{item.name}}</span>
+                        </a>
+                        <figure class="container-1">
+                            <img
+                                ngSrc="/images/{{item.img}}"
+                                alt=''
+                                role="presentation"
+                                fill
+                                decoding="async"
+                            />
+                        </figure>
+                        <div class="container-2">
+                            <div class="info">
+                                <h2 class="title">{{item.name}}</h2>
+                            </div>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </section>
+    </div>
+</div>

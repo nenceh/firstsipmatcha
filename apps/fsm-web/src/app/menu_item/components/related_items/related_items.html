@@ -1,0 +1,24 @@
+@if(!relatedItems.loading() && itemId()){
+    @for(item of relatedItems.items(); track $index){
+        @if(itemId() !== item.itemId){
+            <li class="list-item">
+                <a routerLink="/menu/{{item.itemId}}" class='item-link'>
+                    <span class="sr-only">{{item.name}}</span>
+                </a>
+                <figure class="container-1">
+                    <img
+                        src="/images/{{item.img}}"
+                        alt=''
+                        role="presentation"
+                        decoding="async"
+                    />
+                </figure>
+                <div class="container-2">
+                    <div class="info">
+                        <h3 class="title">{{item.name}}</h3>
+                    </div>
+                </div>
+            </li>
+        }
+    }
+}

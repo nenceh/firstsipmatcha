@@ -1,0 +1,203 @@
+@media screen and (max-width: 479px){
+    .stages-container{
+        gap: 20px;
+        padding: 16px 0 24px;
+        li{
+            margin-left: 28px;
+            padding-left: 32px;
+        }
+    }
+
+    .benefits-container{padding-bottom: 24px;}
+}
+
+@media screen and (min-width: 480px){
+    .stages-container{
+        gap: 24px;
+        padding: 24px 0 40px;
+        li{
+            margin-left: 36px;
+            margin-right: 24px;
+            padding-left: 40px;
+        }
+    }
+    .benefits-container{padding-bottom: 40px;}
+}
+
+@media screen and (max-width: 943px){
+    .stages-container{
+        li{            
+            &:before{
+                width: 36px;
+            }
+        }
+        .label{
+            @include set-text(display, 2-small);
+            margin: 4px 0;
+        }
+        .description{@include set-text(body, small);}
+    }
+
+    .benefits-container{
+        li.benefit{
+            button{
+                padding: 16px 16px 16px 12px;
+                gap: 12px;
+                .icon{
+                    padding-top: 2px;
+                    &.ctrl{
+                        padding: 6.5px 8.5px;
+                        svg, i.fa{
+                            width: 7px;
+                            font-size: 11px;
+                            line-height: 11px;
+                        }
+                    }
+                }
+                .label{
+                    @include set-text(display, 2-small);
+                }
+            }
+            .description{
+                margin-left: 28px;
+                margin-right: 12px;
+            }
+            &.open .description{margin-bottom: 20px;}
+        }
+    }
+}
+
+@media screen and (min-width: 944px){
+    .stages-container{
+        gap: 40px;
+        padding: 24px 0 80px;
+        li{
+            margin-left: 62px;
+            margin-right: 40px;
+            padding-left: 48px;
+            
+            &:before{
+                width: 40px;
+            }
+        }
+        .label{
+            margin: 8px 0;
+            @include set-text(display, 2);
+        }
+        .description{@include set-text(body, large);}
+    }
+
+    ul.benefits-container{
+        padding-bottom: 80px;
+        li.benefit{
+            button{
+                padding: 24px 24px 24px 20px;
+                gap: 16px;
+                .icon{
+                    &.ctrl{
+                        padding: 7.5px 9.5px;
+                        svg, i.fa{
+                            width: 9px;
+                            font-size: 13px;
+                            line-height: 13px;
+                        }
+                    }
+                }
+                .label{
+                    @include set-text(display, 2);
+                }
+            }
+            .description{
+                margin-left: 34px;
+                margin-right: 16px;
+            }
+
+            &.open .description{margin-bottom: 24px;}
+        }
+    }
+}
+
+@media (hover: hover), (-ms-high-contrast:none) and (pointer: fine){
+    ul.benefits-container{
+        li.benefit button:hover .ctrl.icon{
+            background-color: get-color(main, primary-variant-hover);
+        }
+    }
+}
+
+ol.stages-container{
+    list-style-type: none;
+    li{
+        position: relative;
+        counter-increment: li;
+        
+        &:before{
+            position: absolute;
+            left: -16px;
+            content: counter(li);
+            padding: 6px 0;
+            border-radius: 50%;
+            text-align: center;
+            background-color: get-color(main, tertiary-container);
+        }
+    }
+}
+
+ul.benefits-container{
+    gap: 0 !important;
+    list-style-type: none;
+
+    li.benefit{
+        border-top: 1px solid get-color(main, primary-container-1);
+
+        &:last-child{border-bottom: 1px solid get-color(main, primary-container-1);}
+
+        &.open{
+            .ctrl{transform: rotate(90deg);}
+            .description{
+                height: auto;
+                visibility: visible;
+            }
+        }
+        button{
+            align-items: flex-start;
+            justify-content: flex-start;
+            width: 100%;
+            box-shadow: unset;
+            background-color: unset;
+            color: get-color(main, primary);
+            white-space: wrap;
+
+            .icon{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transform: rotate(0);
+                
+                &.ctrl{
+                    background-color: get-color(main, primary-variant);
+                    border-radius: 50%;
+                    transition: transform 0.2s, background-color 0.3s;
+                    svg, i.fa{
+                        fill: get-color(main, on-primary);
+                        color: get-color(main, on-primary);
+                    }
+                }
+            }
+
+            .label{
+                flex: 1;
+                text-align: start;
+            }
+
+            &:active .ctrl{
+                background-color: get-color(main, primary-variant-hover);
+            }
+        }
+        .description{
+            height: 0;
+            visibility: hidden;
+            transition: opacity 0.4s, height 0.4s;
+        }
+    }
+}

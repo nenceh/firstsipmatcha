@@ -1,0 +1,56 @@
+<div class="page" id="menu">
+    <div class="page-item-container title menu-item">
+        <div class="breadcrumbs-container">
+            <nav class="breadcrumbs">
+                <ul>
+                    <li class="crumb"><a routerLink="/menu">Our Menu</a><span aria-hidden="true">/</span></li>
+                    <li class="crumb">
+                        <span *ngIf="!item.loading">{{item.item.name}}</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="page-title">
+            <figure>
+                <img
+                    *ngIf="!item.loading"
+                    src="/images/{{item.item.img}}"
+                    alt=''
+                    decoding="async"
+                    priority
+                    fill
+                />
+            </figure>
+            <div class="info">
+                <h1 *ngIf="!item.loading" class="title">{{item.item.name}}</h1>
+                <div *ngIf="!item.loading" class="description">{{item.item.description}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="page-item-container body">
+        <section id="section-1" class="section">
+            <div class="section-body">
+                <p>More information to be added! Stay tuned!</p>
+            </div>
+        </section>
+        <section id="section-2" class="section">
+            <div class="section-heading"><h2 *ngIf="!item.loading">More {{item.item.tags[0]}}s</h2></div>
+            <div class="section-body">
+                @if(!item.loading){
+                    <ul
+                        class="more-items-list"
+                        [tagName]="item.item.tags[0]"
+                        [itemId]="itemId"
+                    ></ul>
+                }
+                <!-- <ul class="more-items-list">
+                    @if(!relatedItems.loading()){
+                        @for(item of relatedItems.items(); track $index){
+                            <li><span>{{item.name}}</span></li>
+                        }
+                    }
+                </ul> -->
+            </div>
+        </section>
+    </div>
+</div>

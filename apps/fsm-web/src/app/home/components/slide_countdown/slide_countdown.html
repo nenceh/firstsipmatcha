@@ -1,0 +1,32 @@
+<div class="container-1">
+    <div class="info">
+        <h1 class="title">
+            <span class="title-1">{{title1()}}</span>
+            <span class="title-2">{{title2()}}</span>
+        </h1>
+        <div class="description">
+            <div class="bullet">
+                <h2 class="label-1">
+                    Our <span class='highlight'>NEW</span> pop-up store
+                </h2>
+            </div>
+            <div class="group">
+                <div class="bullet">
+                    <span class="label-1">{{dayOfWeek()}} {{month}} {{date}}</span>
+                    <span class="label-2">{{startTime}} - {{endTime}}</span>
+                </div>
+                <div class="bullet">
+                    <span class="label-1">{{locationAddress()}}</span>
+                    <span class="label-2">{{locationTag()}}<span class='sr-only'> on Instagram</span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-2">
+    @if(displayTimer()){
+        <h3 class="countdown-heading">HAVE YOUR FIRST SIP IN</h3>
+        <div class="countdown-timer" [targetDateInput]="targetDate()"></div>
+    }
+</div>

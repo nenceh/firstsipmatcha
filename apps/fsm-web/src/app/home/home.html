@@ -1,0 +1,92 @@
+<div id="hero" class="landing-container"></div>
+
+<div id="showcase" class="landing-container">
+    <div class="showcase-item-container">
+        <section class="showcase-item landing">
+            <figure class="container-1">
+                <img
+                    src="images/menu/matcha-latte-transparent.png"
+                    alt="A glass of the signature Matcha Latte, served with ice."
+                    decoding="async"
+                />
+            </figure>
+            <div class="container-2">
+                <div class="info">
+                    <h2 class="title">
+                        <span class="title-1">Our signature</span> 
+                        <span class="title-2">MATCHA LATTE</span>
+                    </h2>
+                    <div class="description">Smooth and creamy, made with high-quality blend from Uji, Japan</div>
+                </div>
+                <div class="add">
+                    <h3 class="heading">AVAILABLE WITH</h3>
+                    <div class="list">
+                        <div class="item" id="ice">
+                            <i [ariaHidden]="true" class="fa fa-solid fa-snowflake"></i>
+                            <span class="label">Ice</span>
+                        </div>
+                        <div class="item" id="foam">
+                            <i [ariaHidden]="true" class="fa fa-solid fa-cloud"></i>
+                            <span class="label">Cold Foam</span>
+                        </div>
+                        <div class="item" id="syrup">
+                            <i [ariaHidden]="true" class="fa fa-solid fa-droplet"></i>
+                            <span class="label">Fruit Syrup</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="showcase-link-container">
+        <section class="showcase-link landing">
+            <div class="container-1">
+                <div class="info">
+                    <h2 class="title">
+                        <span class="title-1">Browse </span>
+                        <span class="title-2">OUR FULL MENU</span>
+                    </h2>
+                    <a class="btn-primary" routerLink="/menu">Explore all drinks</a>
+                </div>
+            </div>
+            <figure class="container-2">
+                <img
+                    src="images/misc/example.jpg"
+                    alt="A hand holding the signature Matcha Latte, served with ice, by the top of the plastic cup along with a straw. In the background, there are plotted plants with large green leaves."
+                    decoding="async"
+                />
+            </figure>
+        </section>
+    </div>
+</div>
+
+<div id="about" class="landing-container">
+    <section class="landing">
+        <figure class="container-1">
+            <svg focusable="false" [ariaHidden]="true" viewBox="0 0 387 466" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M73.8394 0L44.9533 55.2268L65.0372 66.7377L279.266 84.1982L314.847 54.4507L274.927 61.3056L292.655 14.8737L73.8394 0ZM314.723 17.5898L341.749 52.8987L329.476 185.986L332.947 341.319L387 397.322L371.999 331.102L378.818 185.081L347.452 43.1985L314.723 17.5898ZM313.235 78.5074L270.34 116.532L69.0044 97.5199L27.7208 154.687L11.1081 315.84L225.833 352.184L9.02537 336.146L0 423.707L242.073 458.24L252.983 178.226L313.235 78.5074ZM320.797 102.823L274.679 185.986L266.992 426.423L311.499 348.045L311.871 185.986L320.797 102.823ZM325.261 362.919L266.992 466L382.041 426.423L325.261 362.919Z" fill="#66A792"/>
+            </svg>
+            @for(benefit of about_info.benefits; track benefit.num){
+                <div id={{benefit.id}} class="card">
+                    <i [ariaHidden]="true" class={{benefit.icon_className}}></i>
+                    <span class="label">{{benefit.label}}</span>
+                </div>
+            }
+        </figure>
+        <div class="container-2">
+            <div class="info">
+                <h2 class="title">
+                    <span class="title-2">WHY MATCHA?</span>
+                </h2>
+                <a
+                    class="btn-secondary"
+                    routerLink="/about"
+                >
+                    Learn more
+                    <span class='sr-only'> about us and our ceremonial matcha</span>
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
