@@ -1,0 +1,26 @@
+build
+dist / media
+node_modules
+.DS_Store
+.env
+.next
+.vercel
+.github
+
+_next
+
+node_modules/
+
+out/
+
+prisma/migrations
+prisma/seed.ts
+
+lib/apolloClient.ts
+
+public/.nojekyll
+
+app/(market)/test
+
+database/menuFull.ts
+database/productStore.ts

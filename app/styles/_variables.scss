@@ -1,0 +1,87 @@
+$palette: (
+    neutral: (
+        0 : #FFF,
+        10: #FCFCFC,
+        50: #F5F5F5,
+        100: #F0F0F0,
+        1000: #000,
+    ),
+    main:(
+        primary: #0D171F,
+        on-primary: #FFF,
+        primary-variant: #182939,
+        primary-variant-hover: #465461,
+        primary-variant-container: #0A1118,
+        primary-container-1: #B7BDC2,
+        primary-container-2: #959DA4,
+        primary-container-hover: #E8EAEB,
+        secondary: #1B7C5D,
+        secondary-hover: #66A792,
+        on-secondary: #FFF,
+        secondary-container: #B7C5C8,
+        on-secondary-container: #135842,
+        secondary-variant: #A3FFBD,
+        on-secondary-variant: #135842,
+        secondary-variant-container: #418C56,
+        on-secondary-variant-container-1: #F0F0F0,
+        on-secondary-variant-container-2: #FFFFFF,
+        tertiary: #EBB55F,
+        on-tertiary: #0D171F,
+        tertiary-container: #F4D5A3,
+        on-tertiary-continer: #182939,
+    ),
+);
+
+$text: ( // size, weight, height, spacing
+    header:(
+        menu-item-large: (17px,600, 24px, -0.4px),
+        menu-item-small: (14px,600, 24px, -0.4px),
+    ),
+    display:(
+        1: (48px, 800, 64px, -0.4px),
+        1-small: (40px, 800, 56px, -0.4px),
+        2: (24px, 600, 28px, -0.4px),
+        2-small: (20px, 600, 24px, -0.4px),
+    ),
+    heading:(
+        1:(53px, 400, 80px, 0),
+        1-small:(40px,400,56px, 0),
+        2:(32px,400,48px, 0),
+        2-small:(29px,400,40px, 0),
+        3:(29px,400,40px, 0),
+        3-small:(26px,400,36px, 0),
+        4:(26px,400,36px, 0),
+        4-small:(23px,400,32px, 0),
+        5:(23px,400,32px, 0),
+        5-small:(20px, 400, 28px, 0),
+        6:(20px, 400, 28px, 0),
+        6-small:(18px, 400, 24px, 0),
+    ),
+    body: (
+        large: (18px, 400, 28px, -0.4px),
+        large-semibold: (18px, 600, 28px, -0.4px),
+        small: (16px, 400, 24px, -0.25px),
+        small-semibold: (16px,600, 24px, -0.25px),
+        caption: (14px, 400, 16px, -0.2px),
+        caption-semibold: (14px, 600, 16px, -0.2px),
+        caption-small: (13px, 400, 16px, -0.1px),
+        caption-small-semibold: (12px, 600, 16px, -0.1px),
+        input-error: (12px, 400, 16px, -0.1px),
+        footer: (14px, 400, 16px, -0.2px),
+        footer-semibold: (14px, 600, 16px, -0.2px),
+    ),
+);
+
+@function get-color($type, $tone){
+    @return map-get(map-get($palette, $type), $tone);
+}
+
+@mixin set-text($type, $size){
+    $text: map-get(map-get($text, $type), $size);
+    font-size: nth($text, 1);
+    font-weight: nth($text, 2);
+    line-height: nth($text, 3);
+    letter-spacing: nth($text, 4);
+    @if ($type == body or $type == display or $type == header){ font-family: "Josefin Sans", serif;}
+    @else{ font-family: "Carter One", serif;}
+}

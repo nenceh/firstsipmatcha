@@ -1,0 +1,833 @@
+@import './variables';
+@import './header-nav'; // .btn-icon{#nav-menu, #ig-link}, .btn-menuitem
+@import './header-shop';
+@import './home';
+@import './menu';
+@import './about';
+@import './shop';
+@import './cart';
+@import './checkout';
+@import './skeleton';
+
+.header-container.loading{
+    background-color: get-color(main, primary-variant);
+    a.btn-menuitem{
+        transition: opacity 3s;
+        pointer-events: none;
+        &.loading{
+            opacity: 0;
+        }
+    }
+}
+
+body main, .footer-container{
+    transition: opacity 0.4s;
+    &.loading{opacity: 0;}
+}
+
+@media screen and (max-width: 479px){
+    #hero, #menu, #shop, #checkout, #about, #page {
+        padding-top: 56px;
+    }
+
+    body{
+        ul, ol{
+            li.bullet{
+                margin-left: 28px;
+            }
+        }
+    }
+
+    .page{
+        &-title,&-body,&-item-container.title nav.breadcrumbs, .shop-nav, .product-note-container{
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+        &-body{
+            gap: 40px;
+        }
+
+        &-item-container{
+            &.title{
+                .page-title{
+                    figure{
+                        height: 200px;
+                    }
+                }
+            }
+        }
+    }
+
+    figure{
+        padding: 8px 0 24px;
+        &.graphic{
+            width: 100%;
+            height: 280px;
+        }
+        img{@include set-text(body, small);}
+        figcaption{
+            @include set-text(body, caption-small);
+            margin-top: 8px;
+        }
+    }
+
+    .footer{
+        gap: 40px;
+        padding: 40px 24px 64px;
+
+        &-sitemap{
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+    }
+}
+
+@media screen and (min-width: 480px){
+    #hero, #menu, #shop, #checkout, #about, #page {
+        padding-top: 64px;
+    }
+
+    body{
+        ul, ol{
+            li.bullet{
+                margin-left: 36px;
+            }
+        }
+    }
+
+    .page{
+        &-item-container{
+            &.menu-item{
+                .page-title{
+                    figure{
+                        height: 200px;
+                    }
+                }
+            }
+        }
+        &-title,&-body,&-item-container.title nav.breadcrumbs, .shop-nav, .product-note-container{
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+        &-body{
+            gap: 80px;
+        }
+    }
+
+    figure{
+        padding: 16px 0 40px;
+        &.graphic{
+            width: 100%;
+            height: 340px;
+        }
+        img{@include set-text(body, small);}
+        figcaption{
+            @include set-text(body, caption-small);
+            margin-top: 8px;
+        }
+    }
+
+    .footer{
+        gap: 64px;
+        padding: 40px 40px 64px;
+
+        &-sitemap{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px 16px;
+        }
+    }
+}
+
+@media screen and (max-width: 712px){
+    .page{
+        &-item-container{
+            &.title{
+                .page-title .info{
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 713px){
+    .page-title h1, .section-heading, .section-body p, .section-body .more-items-list, .section-body hr, .related-products-list, figcaption, .restrict, ul.benefits-container, .product-note-container, .order-summary, .order-details{max-width: 581px;}
+    .page{
+        &-item-container{
+            &.menu-item{
+                .page-title{
+                    figure{
+                        height: 240px;
+                    }
+                }
+            }
+
+            &.menu-item .page-title, &.product-title .page-title{
+                flex-direction: row;
+                & >*{width: 50%;}
+            }
+        }
+        &-title,&-body,&-item-container.title nav.breadcrumbs, .shop-nav{
+            padding-left: 80px;
+            padding-right: 80px;
+        }
+        &-title{gap: 24px;}
+    }
+    figure.graphic{
+        height: 400px;
+    }
+    .footer{
+        padding: 64px 80px 40px;
+    }
+}
+
+@media screen and (max-width: 943px){
+    svg{
+        width: 16px;
+        height: 16px;
+    }
+    i.fa{
+        font-size: 16px;
+        line-height: 16px;
+    }
+
+    %btn{ 
+        padding: 8px 16px;
+    }
+    .btn-icon{
+        padding: 12px;
+    }
+    
+    .icon-padding{
+        padding: 8px;
+    }
+
+    body{
+        &,p,button{@include set-text(body, small);}
+        h1{ @include set-text(heading, 1-small); }
+        h2{ @include set-text(heading, 2-small); }
+        h3{ @include set-text(heading, 3-small); }
+        h4 { @include set-text(heading, 4-small); }
+        h5 { @include set-text(heading, 5-small); }
+        h6 { @include set-text(heading, 6-small); }
+
+        a{@include set-text(body, small-semibold);}
+    }
+
+    .info{
+        .title{
+            gap: 4px;
+            &-1{
+                @include set-text(display, 2-small);
+            }
+            &-2{
+                @include set-text(display, 1-small);
+            }
+            .description{
+                @include set-text(body, small);
+            }
+        }
+    }
+
+    .page{
+        nav.breadcrumbs{
+            padding-top: 8px;
+            padding-bottom: 8px;
+            ul{
+                span{margin-left: 8px;}
+            }
+        }
+
+        &-item-container{
+            &.title{
+                .page-title .info{
+                    gap: 4px;
+                    margin-top: 24px;
+                }
+            }
+        }
+        &-title{
+            padding-top: 64px;
+            padding-bottom: 40px;
+            width: 100%;
+
+            .description{@include set-text(body, small-semibold);}
+        }
+        &-body{
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+
+        .section{
+            gap: 24px;
+            &-heading{}
+            &-body{
+                gap: 20px;
+                ol,ul{
+                    gap: 24px;
+                }
+            }
+        }
+    }
+
+    .footer{
+        &-sitemap{
+            ul{
+                margin-top: 12px;
+                gap: 8px;
+                &.social{
+                    gap: 8px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 944px){
+    html{scroll-padding-top: 96px;}
+    svg{
+        width: 24px;
+        height: 24px;
+    }
+    i.fa{
+        font-size: 24px;
+        line-height: 24px;
+    }
+
+    %btn{
+        padding: 10px 16px;
+    }
+    .btn-icon{
+        padding: 12px;
+    }
+    
+    .icon-padding{
+        padding: 12px;
+    }
+
+    figure{
+        padding: 24px 0 64px;
+        &.graphic{
+            width: 100%;
+            height: 540px;
+        }
+        img{@include set-text(body, large);}
+        figcaption{
+            @include set-text(body, caption);
+            margin-top: 16px;
+        }
+    }
+
+    body{
+        &,p,button{@include set-text(body, large);}
+        h1{ @include set-text(heading, 1); }
+        h2{ @include set-text(heading, 2); }
+        h3{ @include set-text(heading, 3); }
+        h4 { @include set-text(heading, 4); }
+        h5 { @include set-text(heading, 5); }
+        h6 { @include set-text(heading, 6); }
+
+        a{@include set-text(body, large-semibold);}
+        ul, ol{
+            li.bullet{
+                margin-left: 62px;
+            }
+        }
+    }
+
+    .page-title h1, .section-heading, .section-body p, .section-body .more-items-list, .section-body hr, .related-products-list, figcaption, .restrict, ul.benefits-container, .product-note-container, .order-summary, .order-details{
+        max-width: 769px;
+    }
+
+    #hero, #menu, #shop, #checkout, #about, #page {
+        padding-top: 100px;
+    }
+
+    .page{
+        nav.breadcrumbs{
+            padding-top: 8px;
+            padding-bottom: 8px;
+            ul{
+                span{margin-left: 12px;}
+                li > *{
+                    @include set-text(body, caption-semibold);
+                }
+            }
+        }
+
+        &-item-container{
+            &.menu-item{
+                .page-title{
+                    figure{
+                        height: 280px;
+                    }
+                    .info{
+                        gap: 8px;
+                    }
+                }
+            }
+        }
+        &-title,&-body,&-item-container.title nav.breadcrumbs, .shop-nav{
+            padding-left: 120px;
+            padding-right: 120px;
+        }
+
+        &-title{
+            @include set-text(display, 1);
+            gap: 40px;
+            padding-top: 80px;
+            padding-bottom: 40px;
+
+            .description{@include set-text(body, large-semibold);}
+        }
+        &-body{
+            gap: 120px;
+            padding-top: 80px;
+            padding-bottom: 80px;
+        }
+
+        .section{
+            gap: 32px;
+            &-heading{}
+            &-body{
+                gap: 24px;
+                ol,ul{
+                    gap: 24px;
+                }
+            }
+        }
+    }
+
+    .info{
+        .title{
+            gap: 8px;
+        }
+        .title{
+            &-1{
+                @include set-text(display, 2);
+            }
+            &-2{
+                @include set-text(display, 1);
+            }
+            .description{
+                @include set-text(body, large);
+            }
+        }
+    }
+
+    .footer{
+        gap: 40px;
+        padding: 64px 120px 80px;
+        &-sitemap{
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            ul{
+                margin-top: 16px;
+                gap: 12px;
+                &.social{
+                    gap: 12px;
+                }
+            }
+
+            a.footer-link{
+                i.fa{
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1279px){
+    .page-title h1, .section-heading, .section-body p, .section-body .more-items-list, .section-body hr, .related-products-list, figcaption, .restrict, ul.benefits-container, .product-note-container, .order-summary, .order-details{width: 100%;}
+}
+
+@media screen and (min-width: 1280px){
+    .page-title h1, .section-heading, .section-body p, .section-body .more-items-list, .section-body hr, .related-products-list, figcaption, .restrict, ul.benefits-container, .product-note-container, .order-details{
+        width: calc(8 * (100% + 40px) / 12 - 40px);
+        max-width: none;
+    }
+    .page{
+        &-title,&-body,&-item-container.title nav.breadcrumbs, .shop-nav{
+            padding-left: 160px;
+            padding-right: 160px;
+        }
+    }
+    figure.graphic{
+        height: 580px;
+    }
+    .footer{
+        padding: 64px 160px 80px;
+    }
+}
+
+@media screen and (min-width: 1441px){
+    .page-title, .page-body, .page-item-container.title nav.breadcrumbs, .header-nav .shop-nav{
+        width: 1440px !important;
+        margin: 0 auto;
+    }
+}
+
+*, :after, :before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    // scroll-behavior: smooth;
+    font-display: swap;
+}
+
+body{
+    position: relative;
+    overflow-x: hidden;
+    a{
+        color: get-color(main, secondary);
+        transition: color .2s ease;
+        text-underline-offset: 2px;
+    }
+    .icon-padding{height: fit-content;}
+
+    %btn, a{-webkit-tap-highlight-color: transparent;}
+
+    &.modal-open{
+        overflow-y: hidden;
+    }
+
+    &.loading{
+        cursor: wait !important;
+
+        main div.page#shop{
+            .selection{
+            .variations, .modifiers{
+                    input[type=radio] + label:hover, select:hover, span.picker-icon:hover{
+                        cursor: inherit !important;
+                    }
+                }
+            }
+
+            %btn:hover, .btn-link:hover{
+                cursor: inherit !important;
+            }
+        }
+    }
+}
+
+@media (hover: hover), (-ms-high-contrast:none) and (pointer: fine) {
+    body{
+        a:hover{color: get-color(main, secondary-hover);}
+
+        &:not(.loading){
+            .btn-primary:hover:not(:disabled){
+                background: get-color(main, secondary-hover);
+                color: get-color(main, on-secondary);
+            }
+
+            .btn-secondary:hover:not(:disabled):not(.benefit-toggle){
+                box-shadow: inset 0 0 0 1px get-color(main, primary-container-1);
+                background-color: get-color(neutral, 10);
+                color: get-color(main, secondary);
+            }
+
+            .btn-icon:hover:not(:disabled):not(.btn-icon-cart):not(.link){
+                background-color: get-color(main, secondary-container);
+                svg{fill: get-color(main, tertiary);}
+            }
+
+            .page#shop .quantity-control button.btn-icon:hover{
+            &:not(:disabled){
+                    color: get-color(main, primary-variant);
+                }
+            }
+        }
+    }
+
+    %btn{
+        &:disabled:hover{
+            cursor: not-allowed;
+        }
+    }
+
+    .footer{
+        &-sitemap, ul{
+            a.btn-icon.link:hover{
+                background-color: transparent;
+                svg, i.fa{
+                    fill: get-color(main, secondary-hover);
+                    color: get-color(main, secondary-hover);
+                }
+            }
+
+            a.footer-link:hover{
+                color: get-color(main, tertiary-container);
+                text-decoration: underline 1px solid get-color(main, tertiary-container);
+            }
+        }
+        
+        &-logo:hover svg path{
+            fill: get-color(main, secondary-hover);
+        }
+    }
+}
+
+figure{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    line-height: 0;
+    height: fit-content;
+
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        // -webkit-touch-callout: none !important;
+        -webkit-user-select: none !important;
+        user-select: none;
+    }
+    &.graphic img{
+        background-color: get-color(main, secondary-container);
+        border-radius: 5px;
+    }
+}
+
+%btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color .2s ease, color .2s, box-shadow .2s;
+    height: fit-content;
+    width: fit-content;
+
+    i.fa{transition: color .2s;}
+
+    &#copy-to-clipboard{
+        width: 100%;
+        transition: background-color .4s, color .4s;
+        color: get-color(main, primary-variant);
+        &:disabled{
+            cursor: pointer;
+        }
+        &.copied{
+            // background-color: get-color(main, secondary-variant-container);
+            color: get-color(main, on-secondary-container);
+        }
+    }
+}
+.btn-primary{
+    @extend %btn;
+    gap: 8px;
+    background: get-color(main, secondary);
+    color: get-color(main, on-secondary);
+    text-decoration: none;
+
+    svg{fill: get-color(main, on-secondary);}
+    &:active{
+        background: get-color(main, secondary-hover);
+        color: get-color(main, on-secondary);
+    }
+}
+.btn-secondary{
+    @extend %btn;
+    gap: 8px;
+    box-shadow: inset 0 0 0 1px get-color(main, primary-container-2);
+    background-color: get-color(neutral, 50);
+    color: get-color(main, on-secondary-container);
+    text-decoration: none;
+
+    svg{fill: get-color(main, secondary);}
+    &:active:not(:disabled){
+        box-shadow: inset 0 0 0 1px get-color(main, primary-container-1);
+        background-color: get-color(neutral, 10);
+        color: get-color(main, secondary);
+    }
+}
+
+.btn-icon{
+    @extend %btn;
+    line-height: 0;
+    box-shadow: inset 0 0 0 2px get-color(main, primary-container-2);
+    line-height: 0;
+    height: fit-content;
+    border-radius: 100px;
+    background: none;
+    text-decoration: none;
+    color: get-color(main, primary);
+    svg{fill: get-color(main, on-primary);}
+
+    &:active:not(&-cart):not(.link){
+        background-color: get-color(main, secondary-container);
+        svg{fill: get-color(main, tertiary);}
+    }
+}
+
+.btn-menuitem{@extend %btn;}
+
+.btn-link{
+    cursor:pointer;
+    border: none;
+    background-color: unset;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.landing, .slide, .page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .page{
+        &-title, &-body, &-body .section, &-body .section-body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        &-title{color: get-color(main, on-primary);}
+        &-body{color: get-color(main, primary);}
+        &-item-container{
+            width: 100%;
+            &.title{
+                background-color: get-color(main, primary-variant);
+                box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+
+                .breadcrumbs-container{
+                    box-shadow: inset 0 0 10px 0 rgba(0, 0, 0, 0.4);
+                    background-color: get-color(main, secondary-container);
+                }
+
+                .page-title{
+                    .info{
+                        h1{width: unset;}
+                    }
+                }
+            }
+            &.body{background-color: get-color(neutral, 10);}
+        }
+    }
+
+    nav.breadcrumbs{
+        ul{
+            list-style-type: none;
+            flex-flow: row wrap;
+            a{
+                text-decoration: none;
+
+                &, span{
+                    color: get-color(main, primary);
+                }
+            }
+
+            li:last-child{font-weight: 600;}
+        }
+    }
+
+    ol,ul{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .info{
+        &, .title{
+            display: flex;
+            flex-direction: column;
+        }
+        .title{
+            &-1, &-2, .description{width: 100%;}
+        }
+    }
+}
+
+.modal{
+    &-container{
+        position: absolute;
+        height: fit-content;
+        width: fit-content;
+    }
+
+    display: flex;
+    flex-direction: column;
+    &-ctrl{
+        display: flex;
+        gap: 24px;
+    }
+}
+
+.footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &-container{
+        background-color: get-color(main, primary-variant-container);
+    }
+
+    &-sitemap{
+        width: 100%;
+        ul{
+            display: flex;
+            flex-direction: column;
+            list-style-type: none;
+        }
+
+        span.heading{
+            @include set-text(body, small-semibold);
+            color: get-color(main, on-primary);
+        }
+
+        .btn-icon.link{
+            box-shadow: unset;
+            padding: 9px;
+            width: 36px;
+
+            svg,i.fa{
+                color: get-color(main, secondary-container);
+                font-size: 18px;
+                line-height: 18px;
+            }
+
+            &:active {
+                background-color: transparent;
+                svg, i.fa{
+                    fill: get-color(main, secondary-hover);
+                    color: get-color(main, secondary-hover);
+                }
+            }
+        }
+        a.footer-link{
+            @include set-text(body, footer-semibold);
+            text-decoration: none;
+            color: get-color(main, secondary-container);
+
+            i.fa{
+                margin-right: 8px;
+            }
+
+            &:active{
+                color: get-color(main, tertiary);
+                text-decoration: underline 1px solid get-color(main, tertiary-container);
+            }
+        }
+    }
+
+    &-logo{
+        svg{
+            width: auto;
+            path{
+                transition: fill .3s ease;
+                fill: get-color(main, secondary-container);
+            }
+        }
+
+        &:active svg path{
+            fill: get-color(main, secondary-hover);
+        }
+    }
+}

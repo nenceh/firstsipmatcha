@@ -1,0 +1,101 @@
+// npm install prisma --save-dev
+// npx prisma init
+// npx prisma format
+// npx prisma migrate dev
+// npx prisma migrate reset
+
+// many-to-many relationship: https://www.prisma.io/docs/orm/more/help-and-troubleshooting/working-with-many-to-many-relations
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model MenuCategory {
+  id          Int        @id @default(autoincrement())
+  name        String
+  description String?
+  list        MenuItem[]
+}
+
+model MenuItem {
+  itemId       String       @id @unique
+  name         String
+  description  String
+  price        Float
+  tags         ItemTag[]
+  img          String
+  catId        Int
+  archived     Boolean
+  menuCategory MenuCategory @relation(fields: [catId], references: [id])
+}
+
+model ItemTag {
+  id       Int       @id @default(autoincrement())
+  itemId   String?
+  tagId    String?
+  menuItem MenuItem? @relation(fields: [itemId], references: [itemId])
+  tag      Tag?      @relation(fields: [tagId], references: [tagId])
+}
+
+model Tag {
+  tagId String    @id @unique
+  icon  String?
+  items ItemTag[]
+}
+
+model ProductCategory {
+  id          String        @id @unique
+  name        String
+  description String?
+  list        ProductItem[]
+}
+
+model ProductItem {
+  id              String          @id @unique // Square Item id
+  productId       String          @unique // matcha-latte
+  cartItems       CartItem[]
+  catId           String
+  productCategory ProductCategory @relation(fields: [catId], references: [id])
+}
+
+model Order {
+  orderId      String   @id @unique // SPL.orderId -> Square Order ID
+  iKey         String   // iKey
+  SPL_id       String   @unique // SPL.id -> Square Payment Link ID
+  SPL_url      String   // SPL.url -> Square Payment Link URL
+  totalAmount  Float    // SPL.order[0].total_money.amount
+  status       String   // SPL.order[0].fulfillments[0].state
+  refreshToken String
+  session      Session  @relation(fields: [refreshToken], references: [refreshToken], onDelete: Cascade)
+  createdAt    DateTime @default(now()) // SPL.order[0].createdAt -> RFC 3339 format
+  updatedAt    DateTime @updatedAt // SPL.order[0].updatedAt -> RFC 3339 format
+}
+
+model Session {
+  refreshToken  String     @id @unique
+  accessToken   String     @unique
+  accessExpired Boolean    @default(false)
+  expiryDate    DateTime
+  cartItems     CartItem[]
+  orders        Order[]
+}
+
+model CartItem {
+  id             String      @id @unique @default(uuid())
+  quantity       Int
+  productId      String
+  indexVariation Int
+  indexModifiers Int[]
+  refreshToken   String
+  addedAt        DateTime    @default(now())
+  updatedAt      DateTime?
+  productItem    ProductItem @relation(fields: [productId], references: [productId])
+  session        Session     @relation(fields: [refreshToken], references: [refreshToken], onDelete: Cascade)
+
+  @@unique([refreshToken, productId, indexVariation, indexModifiers]) // Ensures a unique combination of cart and product
+}

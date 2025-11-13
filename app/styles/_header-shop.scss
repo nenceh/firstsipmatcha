@@ -1,0 +1,99 @@
+@media screen and (max-width: 943px){
+    .shop-nav{
+        .btn-icon-cart{
+            padding: 8px 10px;
+            i.fa{
+                font-size: 24px;
+                line-height: 24px;
+            }
+
+            span.cart-count{
+                @include set-text(body, caption-small-semibold);
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 944px){
+    .shop-nav{
+        .btn-icon-cart{
+            padding: 8px;
+            i.fa{
+                font-size: 28px;
+                line-height: 28px;
+            }
+
+            span.cart-count{
+                @include set-text(body, caption-semibold);
+            }
+        }
+    }
+}
+
+.shop-nav{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 20px;
+
+    &-container{
+        top: 0;
+        z-index: 97;
+        position: sticky;
+        box-shadow: inset 0 0 10px 0 rgba(0, 0, 0, 0.4);
+        background-color: get-color(main, secondary-container);
+    }
+
+    .breadcrumbs{
+        &-container{
+            height: fit-content;
+            align-self: center;
+            transition: opacity .3s ease;
+
+            &.hide{
+                opacity: 0;
+            }
+            // @supports (animation-timeline: scroll()){
+            //     animation: scroll-reveal linear forwards;
+            //     animation-timeline: scroll();
+            //     // transform-origin: left top;
+            //     opacity: 0;
+                
+            //     animation-range: 140px 160px;
+
+            //     @keyframes scroll-reveal {
+            //         from{
+            //             opacity: 0;
+            //         }
+
+            //         to{
+            //             opacity: 1;
+            //         }
+            //     }
+            // }
+        }
+    }
+
+    .cart-container{
+        position: relative;
+        height: fit-content;
+
+        .btn-icon-cart{
+            border-radius: 0;
+            box-shadow: none;
+
+            i.fa{
+                color: get-color(main, primary-variant);
+            }
+
+            span.cart-count{
+                padding-left: 5px;
+                padding-right: 5px;
+                background-color: get-color(main, primary-variant);
+                color: get-color(main, on-primary);
+                position: absolute;
+                top: calc(50% - 4px);
+            }
+        }
+    }
+}

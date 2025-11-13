@@ -1,0 +1,43 @@
+{
+    "stages": [
+        {
+            "num"           :   1,
+            "label"         :   "Cultivation",
+            "description"   :   "Tea bushes are shaded for several weeks before harvest, reducing sunlight exposure. This increases the chlorophyll and amino acid content, giving matcha its vibrant green color and unique flavor."
+        },
+        {
+            "num"           :   2,
+            "label"         :   "Harvest",
+            "description"   :   "Only the high-grade young tea leaves are selected. Stem, veins, and other impurities are removed in this process."
+        },
+        {
+            "num"           :   3,
+            "label"         :   "Processing",
+            "description"   :   "Leaves are then immediately steamed to prevent oxidation, dried, and then stone-ground into a fine powder."
+        }
+    ],
+
+    "benefits": [
+        {
+            "num"           :   1,
+            "id"            :   "enhanced-cfunction",
+            "label"         :   "Enhanced Cognitive Function",
+            "description"   :   "Matcha contains caffeine, L-theanine, and catechins that improve memory, attention, and stress resilience. It helps reduce reaction time and enhances cognitive performance under stress.",
+            "icon_className":   "fa fa-solid fa-brain"
+        },
+        {
+            "num"           :   2,
+            "id"            :   "cm-health",
+            "label"         :   "Cardio-Metabolic Health",
+            "description"   :   "Matcha improves cholesterol and blood glucose levels, promoting heart health. Regular consumption helps in maintaining a healthy weight and reducing fat accumulation. Its high antioxidant content aids in combating oxidative stress and inflammation.",
+            "icon_className":   "fa fa-solid fa-heart-pulse"
+        },
+        {
+            "num"           :   3,
+            "id"            :   "stress-reduction",
+            "label"         :   "Stress Reduction",
+            "description"   :   "Rich in L-theanine, matcha promotes relaxation and reduces anxiety and physiological stress markers.",
+            "icon_className":   "fa fa-solid fa-spa"
+        }
+    ]
+}

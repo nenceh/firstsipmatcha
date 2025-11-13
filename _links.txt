@@ -1,0 +1,339 @@
+https://scastiel.dev/simplest-example-server-actions-nextjs
+    - request payload shenanigans
+    - Remote Procedure Call (RPC)
+        - https://www.reddit.com/r/nextjs/comments/1bg0dtd/how_server_actions_work_behind_the_scene/
+            - You send an endpoint an id and some data, and that endpoint knows which subfunction (your server action) to call with that data and then send back the result
+            - Whenever you add 'use server' to a server-side function and import it into a client component, it marks it as available to the client (an entry point to the server). That doesn't mean a function gets serialized and sent over the wire, instead, the client will get a URL string to that function and the client can use it to send a request to the server using RPC. It's a POST request. This is handled for you automatically and all you have to do is include 'use server', import your server action or pass it as a prop, and just use it. You never see this URL string, but that's how it works under the hood.
+        - https://www.reddit.com/r/nextjs/comments/1auu7hb/api_routes_vs_server_actions/
+            - Since server actions are a remote procedure call (RPC), you can technically fetch data from the server with them, and there is nothing stopping you.
+
+Protect your NextJs 13 app using Next-Auth: https://www.youtube.com/watch?v=Eh3EpwqT4cM&t
+
+Build a modern Ecommerce website like Amazon in 5 hours [React.JS, Next.JS and Sanity]: https://www.youtube.com/watch?v=FcRWgWQale4
+
+NextJS + NestJS + Prisma: https://dev.to/nadim_ch0wdhury/building-a-scalable-virtual-shopping-mall-with-nextjs-nestjs-prisma-and-stripe-integration-9n8
+
+add to cart w/o login | nextjs (they use useContext): https://www.youtube.com/watch?v=0qcYeqvCZnY&pp=0gcJCRsBo7VqN5tD
+
+How do you avoid multiple identical REST requests in a Next.js app (server & client components)?: https://www.reddit.com/r/nextjs/comments/1m8ucst/how_do_you_avoid_multiple_identical_rest_requests/
+
+Next.js Static Export: https://github.com/leerob/next-static-export-example/tree/main
+
+Square Web Payments
+    - https://developer.squareup.com/blog/accept-payments-with-square-using-next-js-app-router/
+    - https://github.com/alexiscirmi/nextjs-square-payments
+    - How to Integrate Payment Gateways in Next.js Without Exposing Sensitive Data: https://medium.com/@mohantaankit2002/how-to-integrate-payment-gateways-in-next-js-without-exposing-sensitive-data-cb24675ad861
+    - Alternative to Stripe. (How to use Square payment links): https://www.youtube.com/watch?v=hiqhrqmjIHg
+
+Next.js 13 - How to ACTUALLY use Server Actions (caching & revalidation) (revalidatePath/Tag video): https://www.youtube.com/watch?v=O9NX6r7wZEY
+
+React useHook: https://www.youtube.com/watch?v=bKm1rNaCFOo
+
+API Routes vs Server Actions: https://www.reddit.com/r/nextjs/comments/1auu7hb/api_routes_vs_server_actions/
+
+Common mistakes with the Next.js App Router and how to fix them: https://vercel.com/blog/common-mistakes-with-the-next-js-app-router-and-how-to-fix-them
+
+How Incremental Static Regeneration (ISR) Works in Next.js: https://www.freecodecamp.org/news/how-incremental-static-regeneration-isr-works-in-nextjs/
+
+Best methods of re-fetching data: https://www.reddit.com/r/nextjs/comments/14g5psd/best_methods_of_refetching_data/
+
+ISR: https://nextjs.org/docs/app/guides/incremental-static-regeneration
+
+middleware guide: https://www.contentful.com/blog/next-js-middleware/
+
+access/refresh token flowchart: https://docs.secureauth.com/ciam/en/refresh-token-flow.html
+
+managing tokens example: https://dev.to/andrews1022/how-to-manage-access-and-refresh-tokens-for-an-api-in-nextjs-13-with-supabase-and-prisma-33ea
+
+Security Considerations When Building a Next.js Application and Mitigating Common Security Risks: https://medium.com/@farihatulmaria/security-considerations-when-building-a-next-js-application-and-mitigating-common-security-risks-c9d551fcacdb
+
+handling api calls in frontend nextjs: https://www.youtube.com/watch?v=dGY6uE8G5mg
+
+Implementing refresh token with nextjs 15 using app router with cross api (different api): https://medium.com/@sundargautam2022/implementing-refresh-token-with-nextjs-15-using-app-router-with-cross-api-different-api-5682f83f9802
+
+Vercel functions w/ NextJS: https://vercel.com/docs/functions/functions-api-reference/vercel-functions-package
+
+https://www.reddit.com/r/nextjs/comments/1fe59lg/i_made_a_tool_to_test_middleware_matchers/
+
+Instagram
+    - https://blog.devgenius.io/how-add-your-instagram-posts-to-your-react-project-e8527d2a7187
+    - https://stackoverflow.com/questions/60575765/embed-the-latest-post-from-instagram-to-my-website
+    - https://stackoverflow.com/questions/65651313/how-could-i-hide-api-key-in-my-react-app-and-host-the-working-version-in-github
+    - https://cming0721.medium.com/instagram-feeds-with-instagram-api-part-2-basic-display-api-with-react-f0c6dfcc576c
+
+Prisma innextjs: https://www.youtube.com/watch?v=QXxy8Uv1LnQ
+
+How to think about data security in Next.js: https://nextjs.org/docs/app/guides/data-security
+
+-=+=- SQUARE EXTRAS -=+=-
+// async function main(){
+//     let ik = 100;
+//     const paymentLinks = await SQUARE.checkout.paymentLinks.list({});
+//     for(const link of paymentLinks.data){
+//         await SQUARE.checkout.paymentLinks.delete({
+//             id: link.id as string,
+//         });
+
+//         console.log('deleted:', link.id);
+//     }
+// }
+
+// main();
+
+// export async function submitPayment(sourceId: string){
+//     const UUID = '123456789012';
+//     try{
+//         const res = await SQUARE.payments.create({
+//             idempotencyKey: UUID,
+//             sourceId: sourceId,
+//             amountMoney: {
+//                 amount: BigInt(10),
+//                 currency: 'CAD',
+//             },
+//         });
+
+//         return res;
+//     } catch(e){ console.log(e); return undefined; }
+// }
+
+// export const retrievePaymentLink = async (pid: string) => {
+//     try {
+//         // const res = await fetchSquareObject(`${SQUARE_FETCH_BASEURL.PaymentLinks}/${pid}`, FETCH_METHOD.GET);
+//         const res = await SQUARE.checkout.paymentLinks.get({ id: pid });
+
+//         if(res.paymentLink?.url){
+//             return {
+//                 url: res.paymentLink.url,
+//             }
+//         }
+
+//         return res;
+//     } catch (e) { return undefined; }
+// };
+
+// handling errors: https://developer.squareup.com/docs/build-basics/general-considerations/handling-errors#rate-limiting
+
+// manage customer profiles: https://developer.squareup.com/docs/customers-api/use-the-api/keep-records
+// custom attributes for customers: https://developer.squareup.com/docs/customer-custom-attributes-api/overview
+// best practices for collecting info: https://developer.squareup.com/docs/build-basics/general-considerations/collecting-information
+// export const createCustomer = async(userInfo: SquareCustomer) => {
+//   const UUID = generateUUID();
+//   try{
+//     // const existingCustomer = searchCustomer(userInfo.emailAddress);
+//     // assign only if property exist in target object: https://stackoverflow.com/questions/28104798/assign-only-if-property-exists-in-target-object
+//     // if(!existingCustomer){
+//       const res = await SQUARE.customers.create({
+//         idempotencyKey: UUID,
+//         ...userInfo, // referenceId?
+//         givenName: userInfo.firstName,
+//         familyName: userInfo.lastName,
+//         referenceId: UUID,
+//         emailAddress: userInfo.email,
+//         address: {
+//           ...userInfo, // addressLine1, addressLine2?, postalCode
+//           administrativeDistrictLevel1: userInfo.region,
+//           country: userInfo.countryCode, // ignore warning
+//           locality: userInfo.city,
+//         }
+//       });
+
+//       return {
+//         customer: res.customer,
+//         uuid: UUID,
+//       };
+//     // }
+//     // return false;
+//   } catch(e){ console.log(e); return { customer: undefined, uuid: UUID }; }
+// }
+
+// export const searchCustomer = async(emailAddress: string) => {
+//   try{
+//     return await SQUARE.customers.search({
+//       query: {
+//         filter: {
+//           emailAddress: {
+//             exact: emailAddress,
+//           },
+//           // referenceId: {
+//           //   exact: UUID,
+//           // },
+//         }
+//       }
+//     });
+//   } catch(e){ console.log(e); return undefined; }
+// }
+
+// export const draftSquareOrder = async(cartItems: CartItem[]) => {
+//   const UUID = generateUUID();
+//   try{
+//     const res = await SQUARE.orders.create({
+//       idempotencyKey: UUID,
+//       order: {
+//         locationId: process.env.NEXT_PUBLIC_SQUARE_LOCATION_ID!,
+//         state: 'DRAFT',
+//         lineItems: await Promise.all(cartItems.map(async(item) => {
+//           const lineItem = await createLineItem(item.productItem.id, item.indexVariation, item.indexModifiers);
+//           // console.log('lineItem:', lineItem);
+//           return {
+//             quantity: item.quantity.toString(), // item.quantity
+//             catalogObjectId: lineItem?.variationId,
+//             // note: "item1 note",
+//             itemType: "ITEM",
+//             modifiers: lineItem?.modifiers.map((modId) => ({
+//               catalogObjectId: modId,
+//             })),
+//           };
+//         })),
+//       },
+//     });
+
+//     return { order: res, uuid: UUID };
+//   } catch(e){ console.log(e); return { order: undefined, uuid: undefined }; }
+// }
+
+// export const updateSquareOrder = async(orderId: string, customerId: string, locationId: string, UUID: string) => {
+//     try{
+//         await SQUARE.orders.update({
+//             idempotencyKey: UUID,
+//             orderId: orderId,
+//             order: {
+//                 customerId: customerId,
+//                 state: 'OPEN',
+//                 version: 1,
+//                 locationId: "",
+//             },
+//         });
+
+//         return true;
+//     } catch(e){ console.log(e); return false; }
+// }
+
+// export const createSquareOrder = async(cartItems: SessionCartItem[], customerId: string) => {
+//     const UUID = generateUUID();
+//     try{
+//         const res = await SQUARE.orders.create({
+//             idempotencyKey: UUID,
+//             order: {
+//                 customerId: customerId,
+//                 locationId: process.env.NEXT_PUBLIC_SQUARE_LOCATION_ID!,
+//                 lineItems: [
+//                     {
+//                         quantity: '1',
+//                         catalogObjectId: 'FC3IQCG76ZNPAESZYM2VA72J',
+//                         itemType: 'ITEM',
+//                     }
+//                 ],
+//                 // lineItems: await Promise.all(cartItems.map(async(item) => {
+//                 //   const lineItem = await createLineItem(item.productItem.id, item.indexVariation, item.indexModifiers);
+//                 //   // console.log('lineItem:', lineItem);
+//                 //   return {
+//                 //     quantity: item.quantity.toString(), // item.quantity
+//                 //     catalogObjectId: lineItem?.variationId,
+//                 //     // note: "item1 note",
+//                 //     itemType: "ITEM",
+//                 //     modifiers: lineItem?.modifiers.map((modId) => ({
+//                 //       catalogObjectId: modId,
+//                 //     })),
+//                 //   };
+//                 // })),
+//             },
+//         });
+
+//         return { order: res, uuid: UUID };
+//     } catch(e){ console.log(e); return { order: undefined, uuid: undefined }; }
+// }
+
+// export const createSquareInvoice = async(customerId: string, orderId: string, serviceDate: string, dueDate: string) => {
+//   try{
+//     const res = await SQUARE.invoices.create({
+//       invoice: {
+//         acceptedPaymentMethods: {
+//           card: true,
+//         },
+//         deliveryMethod: 'EMAIL',
+//         locationId: process.env.NEXT_PUBLIC_SQUARE_LOCATION_ID!,
+//         orderId: orderId,
+//         primaryRecipient: {
+//           customerId: customerId,
+//         },
+//         paymentRequests: [{
+//           automaticPaymentSource: 'NONE',
+//           dueDate: dueDate,
+//           requestType: 'BALANCE',
+//           tippingEnabled: true,
+//           reminders: [
+//             {
+//               message: "Don't forget about your order!",
+//               relativeScheduledDays: -1,
+//             },
+//             {
+//               message: "Your order has expired",
+//               relativeScheduledDays: 1,
+//             },
+//           ],
+//         }],
+//         saleOrServiceDate: serviceDate,
+//         title: "Your order",
+//       },
+//     });
+
+//     return res;
+//   } catch(e){ console.log(e); return undefined; }
+// }
+
+// export const publishSquareInvoice = async(invoiceId: string, UUID: string) => {
+//   try{
+//     const res = await SQUARE.invoices.publish({
+//       invoiceId: invoiceId,
+//       idempotencyKey: UUID,
+//       version: 0,
+//     });
+
+//     return res;
+//   } catch(e){ console.log(e); return undefined; }
+// }
+
+// customers api: https://developer.squareup.com/docs/customers-api/what-it-does
+// custom customer attributes overview: https://developer.squareup.com/docs/customer-custom-attributes-api/overview
+// schema json: https://developer-production-s.squarecdn.com/schemas/v1/common.json
+// authorizing users + connecting to square api customers (a/n: they use separate db to store email/password): https://developer.squareup.com/forums/t/authorizing-users-and-connecting-to-square-api-customer-object/6673
+// customers + oauth + tokens (still separate db): https://developer.squareup.com/forums/t/logging-in-through-oauth/2065/4
+// more token management: https://developer.squareup.com/forums/t/correct-implementation-for-machine-to-machine-api-access/23228/4
+
+//json web token for java: https://cheatsheetseries.owasp.org/cheatsheets/JSON_Web_Token_for_Java_Cheat_Sheet.html
+
+// nextjs authentication guide: https://nextjs.org/docs/app/guides/authentication
+
+// nextjs authentication (no libraries, ~2h): https://www.youtube.com/watch?v=yoiBv0K6_1U
+
+// testing payments: https://developer.squareup.com/docs/devtools/sandbox/payments
+
+// a/n: ok i think i understand a lil more of what i can do
+// so i can also use the invoice (which can be sent to customer email)?
+// and the oauth shenanigans i use in actual production which authenticates the published web app (aka this one) and it'll getProducts, makeOrders, etc.
+// so once "checkout" is clicked, we can also get their email address (also maybe can utilize draft order for the cart page?!?!)
+// if email address is not existing customer, create squarecustomer
+// then create order + invoice
+// email is sent via published invoice
+// const createSquareCustomerCustomAttribute_TOKEN = async() => {
+//   try{
+//     const res = await SQUARE.customers.customAttributeDefinitions.create({
+//       customAttributeDefinition: {
+//         key: "TOKEN",
+//         schema: {
+//           "map": [
+//             {
+//               referenceToken: "",
+//               accessToken: "",
+//               accessExpired: false,
+//               expiryDate: "",
+//             },
+//           ],
+//         },
+//         visibility: "VISIBILITY_HIDDEN",
+//       }
+//     });
+
+//     return true;
+//   } catch(e){ console.log(e); return false; }
+// }
